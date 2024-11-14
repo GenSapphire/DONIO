@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News-QCE</title>
+    <link rel="stylesheet" href="QCE.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@100..900&family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <title>News - Kyusi Esports</title>
+</head>
+
+<style>
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    text-decoration: none;
+    list-style: none;
+}
+
+:root {
+    --bg-color: #222327;
+    --text-color: #fff;
+    --main-color: #cb0c43;
+}
+
+body {
+    min-height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #222327;
+    padding: 2rem 12%;
+    transition: all 0.5s ease;
+    border-bottom: 1px solid gray;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.kyusilogo {
+    font-size: 1.75rem;
+    margin-right: 0.2rem;
+    width: 3.125rem;
+}
+
+.logo span {
+    color: var(--text-color);
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+.navbar {
+    display: flex;
+    transition: all 0.5s ease;
+}
+
+.navbar a {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.3rem 0;
+    margin: 0 1.25rem;
+    transition: all 0.5s ease;
+}
+
+.navbar a:hover {
+    color: var(--main-color);
+}
+
+.navbar a.active {
+    color: var(--main-color);
+}
+
+.main {
+    display: flex;
+    align-items: center;
+}
+
+.main a {
+    margin-right: 0.9375rem;
+    margin-left: 0.3125rem;
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+    transition: all 0.5s ease;
+}
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.user i {
+    color: var(--main-color);
+    font-size: 1.75rem;
+    margin-right: 0.4375rem;
+}
+
+.main a:hover {
+    color: var(--main-color);
+}
+
+#menu-icon {
+    font-size: 2.1875rem;
+    color: var(--text-color);
+    cursor: pointer;
+    z-index: 1001;
+    display: none;
+}
+
+#menu-icon.bx-x {
+    color: var(--main-color);
+}
+
+/* RESPONSIVENESS NG NAVIGATION BAR */
+
+@media (max-width: 1280px) {
+    header {
+        padding: 14px 2%;
+    }
+    .navbar a {
+        margin: 0px 15px;
+    }
+}
+
+@media (max-width: 1150px) {
+    .navbar a {
+        margin: 0px 10px;
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 1090px) {
+    #menu-icon {
+        display: block;
+    }
+    .navbar {
+        position: absolute;
+        top: 100%;
+        right: -270px;
+        width: 270px;
+        height: auto;
+        background: var(--main-color);
+        flex-direction: column;
+        padding: 20px 0;
+        border-radius: 10px;
+        transition: right 0.5s ease;
+        overflow-y: auto;
+    }
+    .navbar.open {
+        right: 2%;
+    }
+    .navbar a {
+        color: var(--text-color);
+        margin: 12px 0;
+        padding: 0px 25px;
+    }
+}
+
+@media (max-width: 380px) {
+    header {
+        padding: 10px 5%;
+        flex-wrap: wrap;
+    }
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 100%;
+        right: -270px;
+        width: 100%;
+        background: var(--main-color);
+        transition: right 0.5s ease;
+        padding: 20px 0;
+        z-index: 999;
+    }
+    .navbar.open {
+        right: 0;
+    }
+    .navbar a {
+        font-size: 0.9rem;
+        margin: 8px 0;
+        padding: 10px 15px;
+    }
+    .kyusilogo {
+        width: 40px;
+    }
+    .main {
+        flex: 1;
+    }
+    .main a {
+        font-size: 0.9rem;
+    }
+    #menu-icon {
+        display: block;
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 360px) {
+    .navbar a {
+        font-size: 0.8rem;
+        padding: 8px 10px;
+    }
+    .logo {
+        margin-right: auto;
+    }
+}
+
+
+
+/*CODES FOR CONTENTS*/
+
+
+.titlenews {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 160px 0 0 0;
+    font-family: Oswald;
+    font-weight: 300;
+    font-size: 70px;
+
+}
+.twocontainer {
+    margin: 1.625rem 0 8.6875rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+.item1, .item2 {
+    border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+.item1-whole-content {
+    margin: 30px 10px 0 10px;
+    
+}
+
+.item1-content {
+    margin-top: 10px;
+    color: white;
+    list-style: disc;
+    font-size: 2rem;
+    line-height: 1.2;
+    font-family: Oswald;
+    font-weight: 200;
+}
+
+
+
+
+
+
+
+.item1 {
+    background-color: #1e1e1e;
+    width: 20%;
+    height: auto;
+}
+.item2 {
+  background-color: #C20D43;
+  width: 60%;
+  display: flex; 
+  flex-direction: column;
+  align-items: flex-start; 
+  padding: 20px 20px 0 20px;
+}
+
+.astreusimg {
+    width: 53%;
+    height: auto;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.astreus1 {
+    font-size: 50px;
+    font-family: Oswald;
+    font-weight: 300;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    
+}
+.a {
+    color: #000000;
+}
+
+.baba-ng-astreus {
+    padding: 0 15px 0 15px;
+    margin-top: 10px; 
+    font-size: 2rem;
+    line-height: 1.2;
+    color: #ececec;
+    text-align: justify;
+    font-family: Oswald;
+    font-weight: 300;
+}
+.h1h2 {
+    flex-direction: column;
+}
+
+.long-content {
+    color: #ececec;
+    font-family: Oswald;
+    font-weight: 300;
+    font-size: 2rem;
+    line-height: 1.6;
+    text-align: justify;
+    display: flex;
+    align-items: center;
+    width: 99%;
+    margin-top: -470px;
+    margin-bottom: 50px; 
+}
+
+/* RESPONSIVENESS OF CONTENTS*/
+@media (max-width: 1440px) {
+
+.item1 {
+    margin-left: 0;
+}
+.item2 {
+    width: 70%;
+}
+
+.item1-content {
+    margin-top: 10px;
+    font-size: 1.6rem;
+}
+
+
+    .astreusimg {
+    width: 53%;
+    height: 320px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.astreus1 {
+    font-size: 40px;
+    font-family: Oswald;
+    font-weight: 300;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.baba-ng-astreus {
+    padding: 0 15px 0 15px;
+    margin-top: 10px; 
+    font-size: clamp(1rem, 2.2vw, 1.6rem);
+}
+.long-content {
+    font-size: 1.6rem;
+    margin-top: -390px;
+}
+}
+
+@media (max-width: 1024px) {
+    .titlenews {
+    margin-top: 90px;
+    font-size: 50px;
+}
+
+.item1-content {
+    margin-top: 10px;
+    font-size: clamp(0.8rem, 2.2vw, 1.2rem);
+}
+
+
+.astreusimg {
+    width: 53%;
+    height: 270px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.astreus1 {
+    font-size: 30px;
+    font-family: Oswald;
+    font-weight: 300;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+}
+
+.baba-ng-astreus {
+    padding: 0 15px 0 15px;
+    margin-top: 10px; 
+    font-size: clamp(0.8rem, 2.2vw, 1.5rem);
+}
+.long-content {
+    font-size: clamp(0.8rem, 2.2vw, 1.2rem);
+    margin-top: -270px;
+}
+}
+
+@media (max-width: 768px) {
+    .twocontainer {
+    margin: 20px 0 50px 0;
+    gap: 10px;
+}
+    .titlenews {
+    margin-top: 90px;
+    font-size: 40px;
+}
+.item1 {
+    margin-left: 10px;
+    width: 23%;
+}
+.item2 {
+    margin-right: 10px;
+    width: 80%;
+    height: auto;
+}
+
+.item1-content {
+    margin-top: 10px;
+    margin-left: -20px;
+    font-size: clamp(0.8rem, 2.3vw, 1.5rem);
+}
+
+
+.astreusimg {
+    width: 53%;
+    height: 200px;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+.astreus1 {
+    font-size: 30px;
+    margin: 0;
+}
+
+.baba-ng-astreus {
+    padding: 0;
+    margin-top: 10px; 
+    font-size: clamp(0.8rem, 2.3vw, 1.5rem);
+}
+.long-content {
+    margin-top: -230px;
+    font-size: clamp(0.8rem, 2.3vw, 1.5rem);
+}
+}
+
+@media (max-width: 618px) {
+    .long-content {
+        margin-top: -200px;
+    }
+}
+
+@media (max-width: 551px) {
+    .astreusimg {
+        height: 150px;
+        
+    }
+    .astreus1 {
+    font-size: 25px;
+    margin-top: -10px;
+}
+.baba-ng-astreus {
+    padding: 0;
+    margin-top: 0; 
+}
+}
+
+@media (max-width: 425px) {
+    .twocontainer {
+        flex-direction: column;
+        gap: 20px; 
+    }
+
+    .item1 {
+        width: 90%;
+        margin-left: 20px;
+    }
+
+    .item2 {
+        width: 90%; 
+        display: flex;
+        flex-direction: column; 
+        padding: 20px;
+        margin-left: 20px;
+    }
+
+    .astreusimg {
+        width: 100%; 
+        height: 209px; 
+        margin-bottom: 20px; 
+    }
+
+    .h1h2 {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 220px;
+        margin-left: -360px;
+        margin-bottom: 20px; 
+    }
+
+    .astreus1 {
+        font-size: 30px; 
+        text-align: center; 
+        margin: 0;
+    }
+
+    .baba-ng-astreus {
+        font-size: 20px; 
+        text-align: justify; 
+        margin-bottom: 20px;
+    }
+
+    .long-content {
+        font-size: 1.2rem; 
+        margin-top: -310px; 
+        line-height: 1.6; 
+    }
+}
+@media (max-width: 399px) {
+    .h1h2 {
+        margin-left: -340px;
+    }
+}
+@media (max-width: 375px) {
+    .h1h2 {
+        margin-left: -320px;
+    }
+}
+@media (max-width: 320px) {
+    .h1h2 {
+        margin-left: -270px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* FOOTER HERE */
+
+.container{
+	max-width: 1170px;
+	margin:auto;
+}
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}
+ul{
+	list-style: none;
+}
+.footer{
+    width: 100%;
+	background-color: #24262b;
+    padding: 70px 0;
+}
+.footer-col{
+   width: 25%;
+   padding: 0 15px;
+}
+.footer-col h4{
+	font-size: 18px;
+	color: #fff;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before{
+	content: '';
+	position: absolute;
+	left:0;
+	bottom: -10px;
+	background-color: #fd3029;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child){
+	margin-bottom: 10px;
+}
+.footer-col ul li a{
+	font-size: 16px;
+	text-transform: capitalize;
+	color: #fff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover{
+	color: #fff;
+	padding-left: 8px;
+}
+.footer-col .social-links a{
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: #fd3029;
+	margin:0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #fff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover{
+	color: #fd3029;
+	background-color: #fff;
+}
+
+
+/*responsive FOOTER*/
+@media(max-width: 767px){
+  .footer-col{
+    width: 50%;
+    margin-bottom: 30px;
+}
+}
+@media(max-width: 574px){
+  .footer-col{
+    width: 100%;
+}
+}
+@media(max-width: 425px){
+  .footer-col{
+    width: 100%;
+}
+}
+
+</style>
+
+<body>
+    <!-- NAVIGATION BAR DITO -->
+    <header>
+        <a href="#" class="logo">
+            <img src="KYUSI-E.png" class="kyusilogo" alt="Kyusi Logo">
+            <span>Kyusi Esports</span>
+        </a>
+
+        <ul class="navbar">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Membership</a></li>
+            <li><a href="#">Esports</a></li>
+        </ul>
+
+        <div class="main">
+            <a href="#" class="user"><i class="ri-user-fill"></i>Sign in</a>
+            <a href="#">Register</a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+    </header>
+
+</div>
+
+
+
+
+<p class="titlenews">N<span style="color: #CD2042; font-family: Oswald;">E</span>WS</p>
+
+<div class="twocontainer">
+
+    <div class="item1">
+        <ul class="item1-whole-content">
+            <li class="item1-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li class="item1-content">Quisque tristique justo ut ex mattis interdum.</li>
+            <li class="item1-content">Morbi suscipit lorem eget pellentesque ullamcorper.</li>
+            <li class="item1-content">Vivamus tincidunt sapien nec condimentum venenatis.</li>
+            <li class="item1-content">Fusce non nisi non lacus finibus dapibus.</li>
+            <li class="item1-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li class="item1-content">Quisque tristique justo ut ex mattis interdum.</li>
+            <li class="item1-content">Morbi suscipit lorem eget pellentesque ullamcorper.</li>
+            <li class="item1-content">Vivamus tincidunt sapien nec condimentum venenatis.</li>
+            <li class="item1-content">Fusce non nisi non lacus finibus dapibus.</li>
+            <li class="item1-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+            <li class="item1-content">Quisque tristique justo ut ex mattis interdum.</li>
+            
+            
+        </ul>
+
+        
+    </div>
+
+    
+    
+    
+    
+    <div class="item2">
+        
+        <div style="display: flex; flex-direction: row;">
+        <img class="astreusimg" src="astreus.jpg">
+
+        <div class="h1h2">
+        <p class="astreus1">
+            <span class="a" style="font-size: #ff0909; 
+                                   font-family: Oswald;">A</span>ST<span style="color: #000000; 
+                                                                                font-family: Oswald;">RE</span>US</p>
+        
+        <p class="baba-ng-astreus">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Donec felis quam, convallis ac rutrum eget, hendrerit ut sapien. 
+            Phasellus vulputate justo in quam dignissim, in auctor lorem semper. 
+            Vivamus condimentum porta nisl in tristique. Praesent vitae sagittis ante.
+        </p>
+        </div>
+        </div>
+        
+        <p class="long-content">
+            <br><br><br><br><br><br><br><br><br><br>
+            Dito yung news mga kaibigan!! 
+            Etiam accumsan ex et ipsum scelerisque, ac cursus nunc mollis. 
+            Mauris volutpat pretium odio sit amet ullamcorper. Donec non tincidunt nunc. 
+            Vestibulum at quam blandit, viverra tortor vel, mattis velit. 
+            Pellentesque consectetur ipsum mauris, vitae ornare turpis facilisis eu. 
+            Vivamus euismod arcu nec orci accumsan suscipit. Vestibulum ante ipsum primis 
+            in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus ac mattis ante, 
+            quis sodales felis. Fusce nec enim a leo fringilla ornare vel sed nisi. 
+            Nullam ut diam sed nisi tristique ultricies non eu eros. Aliquam venenatis elit 
+            non nisl lacinia, vel pharetra dolor molestie.
+            Phasellus eget leo eu justo dapibus pulvinar. Maecenas sit amet neque et turpis 
+            fringilla rhoncus vel non nulla. Nulla vitae tellus in lacus ultrices ultrices. 
+            Duis venenatis rhoncus mi. Nam odio ligula, volutpat nec velit a, viverra 
+            ullamcorper orci. Suspendisse sapien erat, ornare ac leo et, eleifend molestie 
+            sapien. Pellentesque et scelerisque elit. Praesent vitae neque condimentum, 
+            posuere lorem vitae, auctor eros. Class aptent taciti sociosqu ad litora torquent 
+            per conubia nostra, per inceptos himenaeos. Morbi lobortis, massa eu elementum 
+            vestibulum, tellus urna ornare lectus, quis lobortis mauris felis non ante. Donec 
+            sapien lorem, venenatis sed nisl eget, ultricies accumsan est. Donec tempor rutrum 
+            augue, vitae commodo mauris congue et. Aliquam sed fringilla tellus. Aliquam at 
+            lobortis libero. Maecenas eu condimentum neque, eget accumsan leo.
+        </p>
+    </div>
+
+</div>
+
+
+
+
+
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <ul>
+                    <li><a href="#">@KYUSIESPORTS</a></li>
+                    <li><a href="#">number nila</a></li>
+                    <li><a href="#">hindi ko na alam</a></li>
+                    <li><a href="#">673 Quirino Hwy, Novaliches, Quezon City, Metro Manila, Quezon City Philippines, 1666</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>hindi ko na alam</h4>
+                <ul>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>ano ilalagay rito jemz</h4>
+                <ul>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                    <li><a href="#">wala pa</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Socials</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+let menu = document.querySelector('#menu-icon');
+let navbar = document.querySelector('.navbar');
+
+menu.onclick = () => {
+    menu.classList.toggle('bx-x'); 
+    navbar.classList.toggle('open'); 
+
+    if (navbar.classList.contains('open')) {
+        navbar.style.right = '0';
+    } else {
+        navbar.style.right = '-100%'; 
+    }
+};
+});
+</script>
+    
+</body>
+</html>
